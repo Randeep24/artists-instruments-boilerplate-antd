@@ -100,10 +100,28 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
   }
+  
+#  type Instrument {
+#    id: String!
+#    year: String!
+#    brand: String!
+#    type: String!
+#    price: String!
+#    artistId: String!
+#  }
+  
+#  type ArtistAndInstruments {
+#    id: String!
+#    firstName: String!
+#    lastName: String!
+#    instruments: [Instrument]
+#  }
 
   type Query {
     artists: [Artist]
+#    instruments: [Instrument]
     getArtist(id: String!) : Artist
+#    getArtistAndInstrument(id: String!): ArtistAndInstruments
   }
 
   type Mutation {
@@ -116,7 +134,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     artists: () => artists,
-
+    // instruments: () => instruments,
     getArtist: (root, args) => {
       const artist = find(artists, { id: args.id })
       if (!artist) {
