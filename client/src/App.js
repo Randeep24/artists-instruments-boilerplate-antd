@@ -13,13 +13,13 @@ import Artists from './components/lists/Artists'
 
 const { Content } = Layout
 
-const client = new ApolloClient({
-  link: createHttpLink({ uri: 'http://localhost:4000/graphql' }),
-  cache: new InMemoryCache()
-})
+// const client = new ApolloClient({
+//   link: createHttpLink({ uri: 'http://localhost:4000/graphql' }),
+//   cache: new InMemoryCache()
+// })
 
 const App = () => (
-  <ApolloProvider client={client}>
+  // <ApolloProvider client={client}>
     <div className='container'>
       <Content className='App'>
         <Title />
@@ -27,7 +27,7 @@ const App = () => (
         <Artists />
       </Content>
     </div>
-  </ApolloProvider>
+  // </ApolloProvider>
 )
 
 export default App

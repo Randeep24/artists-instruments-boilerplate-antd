@@ -103,6 +103,7 @@ const typeDefs = gql`
 
   type Query {
     artists: [Artist]
+    getArtist(id: String!) : Artist
   }
 
   type Mutation {
@@ -114,7 +115,18 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    artists: () => artists
+    artists: () => artists,
+
+    getArtist: (root, args) => {
+      const artist = find(artists, { id: args.id })
+      if (!artist) {
+        throw new Error(`Couldn't find artist with id ${args.id}`)
+      }
+
+        // artist.firstName = args.firstName
+        // artist.lastName = args.lastName
+        return artist
+    }
   },
   Mutation: {
     addArtist: (root, args) => {

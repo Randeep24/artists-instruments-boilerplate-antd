@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, List } from 'antd'
+import { Card, List, Button } from 'antd'
 
 import { EditOutlined } from '@ant-design/icons'
 import UpdateArtist from '../forms/UpdateArtist'
@@ -8,6 +8,9 @@ import RemoveArtist from '../buttons/RemoveArtist'
 const getStyles = () => ({
   card: {
     width: '500px'
+  },
+  button: {
+
   }
 })
 
@@ -54,6 +57,7 @@ const Artist = props => {
             <RemoveArtist id={id} firstName={firstName} lastName={lastName} />
           ]}
           style={styles.card}
+          extra={<a href={`/artists/${id}`}>Learn More</a>}
         >
           {fullName()}
         </Card>
